@@ -68,7 +68,7 @@ function ParsedItemCard(props: Props) {
       <CardContent>
         <div className="grid grid-cols-2 gap-4 border border-neutral-300 p-2">
           <div className="text-sm text-neutral-500">
-            Registration Date and Plan Reference
+            Registration Date &amp; Plan Reference
           </div>
           <div className="text-sm">
             {props.registrationDateAndPlanReference}
@@ -79,7 +79,9 @@ function ParsedItemCard(props: Props) {
               <div key={index}>{desc.trim()}</div>
             ))}
           </div>
-          <div className="text-sm text-neutral-500">Date of Lease and Term</div>
+          <div className="text-sm text-neutral-500">
+            Date of Lease &amp; Term
+          </div>
           <div className="text-sm">{props.leaseDateAndTerm}</div>
         </div>
       </CardContent>

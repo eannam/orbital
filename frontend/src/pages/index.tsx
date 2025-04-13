@@ -3,10 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getParsedData, getRawData } from "@/lib/queries";
+import { parsedDataAtom } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
+import { useSetAtom } from "jotai";
 import { SearchIcon } from "lucide-react";
 import { Geist, Geist_Mono } from "next/font/google";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,6 +23,8 @@ const geistMono = Geist_Mono({
 export default function Home() {
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
+
+  const setParsedData = useSetAtom(parsedDataAtom);
 
   const {
     data: rawData,
@@ -43,6 +47,12 @@ export default function Home() {
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
   });
+
+  useEffect(() => {
+    if (parsedData) {
+      setParsedData(parsedData);
+    }
+  }, [parsedData, setParsedData]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value);
@@ -76,10 +86,10 @@ export default function Home() {
       <Tabs defaultValue="raw" className="justify-start">
         <TabsList>
           <TabsTrigger value="raw" className="text-neutral-300">
-            Raw
+            Raw Data
           </TabsTrigger>
           <TabsTrigger value="parsed" className="text-neutral-300">
-            Parsed
+            Parsed Data
           </TabsTrigger>
         </TabsList>
         <TabsContent value="raw">

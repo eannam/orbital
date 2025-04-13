@@ -38,7 +38,7 @@ export const getRawData = async (): Promise<object[]> => {
   return response.json();
 };
 
-type ParsedDataItem = {
+export type ParsedDataItem = {
   id: string;
   registrationDateAndPlanReference: string;
   description: string;

@@ -1,3 +1,4 @@
+import DownloadButton from "@/components/download-button";
 import ParseButton from "@/components/parse-button";
 import ResetButton from "@/components/reset-button";
 import {
@@ -38,6 +39,7 @@ export default function AppSidebar() {
         <SidebarGroup className="gap-2">
           <ParseButton expanded={state === "expanded"} />
           <ResetButton expanded={state === "expanded"} />
+          <DownloadButton expanded={state === "expanded"} />
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>

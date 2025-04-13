@@ -32,10 +32,10 @@ def parse_schedule_entries(entries: List[Dict[str, List[str]]]) -> List[Dict[str
     # Each field is expected at a specific distance from the *end* of the line,
     # so we reverse the line first and match fields left-to-right.
     regex_entry = re.compile(
-        r"^(?:\s{0,11}(?P<registration>\w{0,9})(?=.{62}))?"  # registration (ends 62 chars before end)
-        r"(?:\s{0,16}(?P<description>.{0,14})(?=.{46}))?"  # description (ends 46 chars before end)
-        r"(?:\s{0,30}(?P<term>.{0,28})(?=.{16}))?"  # lease term (ends 16 chars before end)
-        r"(?:\s{0,16}(?P<title>.{0,14}))(?:\b|$)"  # lessee title (last field, no lookahead)
+        r"^(?:\s{0,11}(?P<title>\w{0,9})(?=.{62}))?"  # title (ends 62 chars before end)
+        r"(?:\s{0,16}(?P<term>.{0,14})(?=.{46}))?"  # term (ends 46 chars before end)
+        r"(?:\s{0,30}(?P<description>.{0,28})(?=.{16}))?"  # description (ends 16 chars before end)
+        r"(?:\s{0,16}(?P<registration>.{0,14}))(?:\b|$)"  # registration (last field, no lookahead)
     )
 
     parsed_entries = []
@@ -88,10 +88,10 @@ def parse_schedule_entries(entries: List[Dict[str, List[str]]]) -> List[Dict[str
         # Construct final structured record
         entry_data = {
             "id": str(uuid4()),  # Generate a unique ID for each parsed entry
-            "registrationDateAndPlanReference": " ".join(entry_columns[0]).strip(),
-            "description": " ".join(entry_columns[1]).strip(),
-            "leaseDateAndTerm": " ".join(entry_columns[2]).strip(),
-            "lesseeTitle": " ".join(entry_columns[3]).strip(),
+            "registrationDateAndPlanReference": " ".join(entry_columns[3]).strip(),
+            "description": " ".join(entry_columns[2]).strip(),
+            "leaseDateAndTerm": " ".join(entry_columns[1]).strip(),
+            "lesseeTitle": " ".join(entry_columns[0]).strip(),
             "notes": [note.strip() for note in notes_array if isinstance(note, str)],
         }
 
