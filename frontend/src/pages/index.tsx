@@ -52,6 +52,12 @@ export default function Home() {
     setSearch(searchInput);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      setSearch(searchInput);
+    }
+  };
+
   const filteredData =
     parsedData?.filter((entry) => {
       if (!search) return true;
@@ -95,6 +101,7 @@ export default function Home() {
                 className="bg-neutral-50 text-neutral-800"
                 value={searchInput}
                 onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
               />
               <Button
                 variant="secondary"

@@ -4,13 +4,13 @@
 
 ### Deployed Solution
 
-A fully deployed solution that can be run in the browser is available at: X
+A fully deployed solution that can be run in the browser is available at: <https://orbital-steel.vercel.app/>
 
 This consists of a simple NextJS, React frontend for displaying the data with a FastAPI python backend.
 
 The web app is deployed to Vercel and the API is deployed with Render.
 
-API docs can be found at: X
+API docs can be found at: <https://orbital-ia4z.onrender.com/docs>
 
 If there is existing parsed data, you can remove it by clicking the 'Reset' button and run the solution again by clicking the 'Parse' button.
 
