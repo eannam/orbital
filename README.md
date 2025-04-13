@@ -16,6 +16,8 @@ If there is existing parsed data, you can remove it by clicking the 'Reset' butt
 
 You can search the returned parsed data using the search bar provided.
 
+You can download the parsed data as a JSON file using the download button.
+
 ### Quickstart
 
 To run the solution, navigate to the `backend` folder and simply run:
