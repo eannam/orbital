@@ -10,8 +10,6 @@ This consists of a simple NextJS, React frontend for displaying the data with a 
 
 The web app is deployed to Vercel and the API is deployed with Render.
 
-API docs can be found at: <https://orbital-ia4z.onrender.com/docs>
-
 If there is existing parsed data, you can remove it by clicking the 'Reset' button and run the solution again by clicking the 'Parse' button.
 
 You can search the returned parsed data using the search bar provided.
@@ -61,3 +59,5 @@ If you would like to run the web app locally:
   * Run `npm install`
   * Run `npm run dev`
   * Open `http://localhost:3000`
+
+API docs can be found at: <https://orbital-ia4z.onrender.com/docs>
