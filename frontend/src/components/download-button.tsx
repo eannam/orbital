@@ -11,13 +11,6 @@ export default function DownloadButton(props: { expanded: boolean }) {
 
   const handleClick = () => {
     setIsLoading(true);
-
-    if (!data || data.length === 0) {
-      toast.info("No data to download. Click 'Parse' first.");
-      setIsLoading(false);
-      return;
-    }
-
     try {
       const blob = new Blob([JSON.stringify(data, null, 2)], {
         type: "application/json",
@@ -50,6 +43,7 @@ export default function DownloadButton(props: { expanded: boolean }) {
       className="bg-neutral cursor-pointer"
       variant={"outline"}
       onClick={handleClick}
+      disabled={!data || data.length === 0}
     >
       {props.expanded ? (
         <div className="flex gap-2">
